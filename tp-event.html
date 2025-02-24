@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8" />
+<title>Manipulation de vue</title>
+<script src="https://unpkg.com/vue@3"></script>
+</head>
+<body>
+
+<div id="monapp">
+	< 
+	<button @click = "change"> {{titre}}</button>
+	<br><br>
+	<button @click ="incrementer" style="padding:10px;margin-right:10px">++</button>
+	<span>{{counter}}</span>
+	<button @click = decrementer style="padding:10px;margin-left:10px">--</button>
+	<br><br>
+	<input @keydown.space = "afficherMessage">
+	<p v-show = "nonaffiche" style="color:red;">Arrêtez de taper des espaces!</p>
+
+	
+</div>
+
+
+<script>
+	const appli = {
+		data () {
+				return {
+					titre: "Cliquez moi!",
+					counter : 0,
+					nonaffiche : false
+
+					
+				}
+			},
+		methods: {
+			change(){
+				this.titre = "Cliqué!";
+			},
+
+			incrementer(){
+				this.counter++;
+			},
+
+			decrementer(){
+				this.counter--;
+			},
+			afficherMessage(){
+				this.nonaffiche = true;
+
+			}
+		}
+	};
+	
+Vue.createApp(appli).mount("#monapp");
+</script>
+
+</body>
+</html>
